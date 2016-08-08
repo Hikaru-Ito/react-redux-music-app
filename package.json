@@ -4,9 +4,9 @@
   "description": "free musicbox for masuilab",
   "scripts": {
     "clean": "rimraf dist",
-    "build:webpack": "export NODE_ENV=production webpack --config webpack.config.prod.js",
+    "build:webpack": "export NODE_ENV=production && webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
-    "dev": "NODE_ENV=development npm start",
+    "dev": "NODE_ENV=development && npm start",
     "production": "npm run build && export NODE_ENV=production && npm start",
     "start": "node run.js",
     "lint": "eslint src"
