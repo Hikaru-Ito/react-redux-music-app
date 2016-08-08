@@ -1,0 +1,244 @@
+@import "./range-mixins.scss";
+@import url(https://fonts.googleapis.com/css?family=Raleway:100,400);
+
+$main-bg-color: #f1f2f0;
+$accent-blue: #37bbe4;
+$accent-gray: #e1e0dd;
+$accent-black: #35342f;
+$accent-orange: #ec6b2d;
+$accent-red: #dd6464;
+
+body {
+  background-color: $main-bg-color;
+  color: $accent-black;
+  justify-content: center;
+  font-family: 'Raleway', sans-serif;
+  padding:0;
+  margin:0;
+}
+
+header {
+  position: fixed;
+  z-index: 10;
+  top:0;
+  left:0;
+  right:0;
+  width: 100%;
+  background: #F57C00;
+  .header-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 12px;
+    width : 960px;
+    margin:0 auto;
+    a {
+      text-decoration: none;
+    }
+    h1 {
+      padding:0;
+      margin:0;
+      margin-right: 40px;
+      color:#fff;
+      font-size: 18px;
+    }
+  }
+}
+main {
+  width:960px;
+  margin:0 auto;
+  margin-top:100px;
+  .main-wrapper {
+    padding:8px;
+  }
+  h2 {
+    padding:16px;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+  }
+}
+.font {
+  font-family: 'Raleway', sans-serif !important;
+}
+.player-wrapper {
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  width: 100%;
+  background: $accent-gray;
+}
+.media-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  background-color: #282F31;
+  color: #fff;
+  min-width : 800px;
+}
+.media-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.media-control-group {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.media-control {
+  margin: 0 12px;
+}
+
+.media-control--progress {
+  -webkit-appearance: none;
+  width: calc(100% - 24px);
+  height: 3px;
+  margin: 0 12px;
+  border: 0;
+  position: absolute;
+  top: 7px;
+  left: 12px;
+  background-color: #373d3f;
+  &::-webkit-progress-bar {
+    background-color: #373d3f;
+  }
+  &::-moz-progress-bar {
+    background-color: lighten(#373d3f, 5%);
+  }
+  &::-webkit-progress-value {
+    background-color: lighten(#373d3f, 5%);
+  }
+}
+.media-control--seekbar {
+  max-width: 280px;
+
+}
+.media-control--volume {
+  max-width: 100px;
+}
+.song-info {
+  font-size: 10px;
+  width:300px;
+  &:after {
+    content:'';
+    clear: both;
+    display: block;
+  }
+  .thum {
+    width: 42px;
+    height: 42px;
+    float:left;
+    margin-right: 8px;
+  }
+  .title {
+    font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin:0;
+    padding:0;
+  }
+  .artist {
+    font-size: 12px;
+    margin:4px 0;
+    padding:0;
+  }
+}
+input[type="range"] {
+  // reset inputs to a plain state
+  @include -range__reset(webkit, moz, ms);
+
+  $track-height: 3px;
+  $track-lower-color: #86b350;
+  $track-upper-color: #373d3f;
+
+  $thumb-height: 8px;
+  $thumb-width: 8px;
+  $thumb-color: #cdd7db;
+
+  width: 100%;
+  height: 12px;
+  padding: 0 12px;
+  margin: 0;
+  background-color: transparent;
+
+  &:hover,
+  &:active {
+    @include -range-thumb(webkit, moz, ms) {
+      transform: scale(1.25);
+    }
+  }
+
+  @include -range-track(webkit, moz, ms) {
+    width: 100%;
+    height: $track-height;
+    border: 0;
+    cursor: pointer;
+    background-color: $track-upper-color;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
+  // so we can style the lower progress
+  &::-webkit-slider-container {
+    background-size: inherit;
+  }
+
+  @include -range-track(webkit) {
+    background: {
+      image: linear-gradient($track-lower-color, $track-lower-color);
+      size: inherit;
+      repeat: no-repeat;
+    }
+  }
+
+  @include -range-fill-lower(webkit, moz, ms) {
+    background-color: $track-lower-color;
+  }
+
+  @include -range-thumb(webkit, moz, ms) {
+    width: $thumb-width;
+    height: $thumb-height;
+    border: 0;
+    border-radius: 50%;
+    background-color: $thumb-color;
+    cursor: grab;
+    transform: scale(1);
+    transform-origin: 50% 50%;
+    transition: transform 150ms ease-out;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
+  @include -range-thumb(webkit) {
+    position: relative;
+    top: -2.5px;
+  }
+}
+
+footer {
+  font-size: 0.75em;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 120px;
+  a {
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+      color: $accent-blue;
+    }
+  }
+
+  #heart{
+    color: $accent-red;
+  }
+}
