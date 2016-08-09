@@ -29,8 +29,8 @@
 ## Development
 
 ```bash
-$ git clone https://github.com/Hikaru-Ito/{}
-$ cd {}  
+$ git clone https://github.com/Hikaru-Ito/react-redux-music-app
+$ cd ./react-redux-music-app
 ```
 
 install modules
@@ -50,5 +50,6 @@ $ gulp
 after clone & install modules
 
 ```bash
-$ npm run production
+$ npm run build
+$ npm start
 ```
