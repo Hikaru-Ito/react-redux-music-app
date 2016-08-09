@@ -1,6 +1,9 @@
 # React Redux Simple MusicApp
 
+
 <img src="https://gyazo.com/2de2d91ba146286f59a8f409bd0683cd.png" />
+
+:laughing::laughing::laughing:
 
 #### Demo site:
 [https://musicm.herokuapp.com/](https://musicm.herokuapp.com/)
