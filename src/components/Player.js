@@ -7,6 +7,7 @@ import PrevIcon from 'material-ui/svg-icons/av/skip-previous'
 import MuteIcon from 'material-ui/svg-icons/av/volume-off'
 import UnMuteIcon from 'material-ui/svg-icons/av/volume-up'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
+import DownloadIcon from 'material-ui/svg-icons/file/file-download'
 import {grey50, red500} from 'material-ui/styles/colors';
 import { Media, controls, withMediaProps } from 'react-media-player'
 const { CurrentTime, Progress, SeekBar, Duration } = controls
@@ -60,6 +61,7 @@ class Player extends React.Component {
                 <p className="title">{track.title}</p>
                 <p className="artist">{track.artist}</p>
               </div>
+              <a href={track.mp3} download={`${track.title}.m4a`} target="_blank"><IconButton><DownloadIcon /></IconButton></a>
               <IconButton
                 disabled={!isPlayerSet}
                 iconStyle={{color:isFaved ? red500 : grey50 }}
